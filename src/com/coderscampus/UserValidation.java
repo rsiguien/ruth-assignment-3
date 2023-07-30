@@ -25,10 +25,9 @@ public class UserValidation {
 				System.out.println("User accepted");
 				System.out.println("Welcome " + userInfo.getName());
 				break;
+			} else {
+				System.out.println("Invalid login, please try again.");
 			}
-		else {
-			System.out.println("Invalid login, please try again.");
-		}
 		attempts++;
 		}
 		

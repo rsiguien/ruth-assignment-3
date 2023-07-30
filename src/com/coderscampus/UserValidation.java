@@ -1,11 +1,12 @@
 package com.coderscampus;
+
 import java.util.Scanner;
 
 public class UserValidation {
 
 	public static void main(String[] args) throws Exception{
-		Boolean isMatch = false;
 		Scanner scanner = new Scanner(System.in);
+		Boolean isMatch = false;
 		int attempts = 0;
 		
 		while(attempts < 5) {
@@ -13,28 +14,24 @@ public class UserValidation {
 			String username = scanner.nextLine();
 			System.out.println("Password: ");
 			String password = scanner.nextLine();
-		
+			
 			UserInfoStorage userInfo = new UserInfoStorage(username, password);
 			isMatch = userInfo.validateUser();
-		
-			if(attempts == 4) {
-			break;
-			}
-		
+			
 			if(isMatch) {
 				System.out.println("User accepted");
 				System.out.println("Welcome " + userInfo.getName());
-				break;
+				break;	
 			} else {
 				System.out.println("Invalid login, please try again.");
 			}
+			if(attempts == 4) {
+				System.out.println("Too many failed login attempts, you are now locked out.");
+				break;
+			}
+			
 		attempts++;
 		}
-		
-		if(attempts == 4) {
-			System.out.println("Too many failed login attempts, you are now locked out.");
-		}
 		scanner.close();
+		}
 	}
-
-}

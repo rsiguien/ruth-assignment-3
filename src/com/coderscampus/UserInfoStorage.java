@@ -30,8 +30,7 @@ public class UserInfoStorage {
 					break;
 				}	
 			}
-			
-		} catch(NullPointerException e) {
+		} catch (NullPointerException e) {
 			System.out.println(e.getMessage());
 		}
 		finally {

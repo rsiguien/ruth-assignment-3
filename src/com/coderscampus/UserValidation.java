@@ -28,7 +28,7 @@ public class UserValidation {
 			} else {
 				System.out.println("Invalid login, please try again.");
 			}
-		attempts++;
+			attempts++;
 		}
 		scanner.close();
 	}

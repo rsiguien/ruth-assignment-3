@@ -1,0 +1,4 @@
+rsiguien@yahoo.com,12345,Ruth Siguiente
+another@user.com,asdfasdf,Another User
+ruth.siguiente@gmail.com,Ihateyou00,Thur Siguiente
+jane.doe@myotherdomain.com,sunrise-sunset,Jane Doe

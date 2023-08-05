@@ -3,17 +3,17 @@ package com.coderscampus;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
-public class UserInfoStorage {
+public class UserPOJO {
 	String username;
 	String password;
 	String name;
 	
-	UserInfoStorage (String username, String password){
+	UserPOJO (String username, String password){
 		this.username = username;
 		this.password = password;
 	}
 	
-	public Boolean validateUser() throws Exception {
+	public Boolean userService() throws Exception {
 		BufferedReader fileReader = null;
 		Boolean flag = false;
 		try { 

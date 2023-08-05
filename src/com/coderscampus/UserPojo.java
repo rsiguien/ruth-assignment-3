@@ -3,12 +3,12 @@ package com.coderscampus;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
-public class UserPOJO {
+public class UserPojo {
 	String username;
 	String password;
 	String name;
 	
-	UserPOJO (String username, String password){
+	UserPojo (String username, String password){
 		this.username = username;
 		this.password = password;
 	}

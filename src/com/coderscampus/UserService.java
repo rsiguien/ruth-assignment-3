@@ -1,33 +1,53 @@
 package com.coderscampus;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+import java.util.Scanner;
 
 public class UserService {
-
-	public UserPojo[] readData() throws Exception {
-		BufferedReader fileReader = null;
-		UserPojo[] users = new UserPojo[4];
-		try { 
-			fileReader = new BufferedReader(new FileReader("data.txt"));
-			String line = "";
-			int i = 0;
-			while ((line = fileReader.readLine()) != null) {
-				String[] stringArray = line.split(",");
-				String username = stringArray[0];
-				String password = stringArray[1];
-				String name = stringArray[2];
+	
+	static int i;
+	
+	public UserService UserDataCollection() throws Exception {
+	Scanner scanner = new Scanner(System.in);
+	Boolean isMatch = null;
+	int attempts = 0;
+	FileService fileService = new FileService();
+	
+	
+	while(attempts < 5) {
+		System.out.println("Username: ");
+		String username = scanner.nextLine();
+		System.out.println("Password: ");
+		String password = scanner.nextLine();
+		UserPojo[] users = fileService.readData();
+		isMatch = validateUsers(users, new UserPojo(username, password, null));
 		
-				UserPojo user = new UserPojo(username, password, name);
-				users[i] = user;
-				i++;
-			}
-		} catch (NullPointerException e) {
-			System.out.println(e.getMessage());
+		if(attempts == 4 && !isMatch) {
+			System.out.println("Too many failed login attempts, you are now locked out.");
+			break;
 		}
-		finally {
-			fileReader.close();
+		if(isMatch) {
+			System.out.println("Welcome: " + users[i].getName());
+			break;
+		} else {
+			System.out.println("Invalid login attempt.");
 		}
-		return users;
+		attempts++;
 	}
+	scanner.close();
+	return null;
+	}
+
+
+public static Boolean validateUsers(UserPojo[] users, UserPojo myUser) {
+	int index=0;
+	for(UserPojo user : users) {
+		if(user.getUsername().equalsIgnoreCase(myUser.getUsername()) && user.getPassword().equals(myUser.getPassword())) {
+			i = index;
+			return true;
+		}
+		index++;
+	}
+	return false;
+}
+
 }

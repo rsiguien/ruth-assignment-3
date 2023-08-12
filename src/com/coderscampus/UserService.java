@@ -6,7 +6,7 @@ public class UserService {
 	
 	static int i;
 	
-	public UserService UserDataCollection() throws Exception {
+	public void UserDataCollection() throws Exception {
 	Scanner scanner = new Scanner(System.in);
 	Boolean isMatch = null;
 	int attempts = 0;
@@ -34,7 +34,7 @@ public class UserService {
 		attempts++;
 	}
 	scanner.close();
-	return null;
+//	return null;
 	}
 
 
